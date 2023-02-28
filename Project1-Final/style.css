@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: baseline;
+
+ }
+
+ .container > div{
+  height:400px;
+  width: 450px;
+ }
+ .Info{
+  width: 300px;
+  height: 400px;
+ }
+
+ .container > div > div {
+  flex-basis: auto;
+  align-items: space-around;
+ }
+
+ .containert {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: baseline;
+  width: 100%;
+  height: fit-content;
+  background-color: #0A1128;
+
+ }
+
+ .containert > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  background: #0A1128;
+  height: 400px;
+  width: 400px;
+
+ }
+
+
+canvas {
+  background-color: #0A1128;
+  box-shadow: 0 0 0 3px #0A1128;
+  cursor: grab;
+  display: block;
+}
+#Info{
+  background-color: #000;
+  color:#fff;
+}
+
+canvas:active {
+  cursor: grabbing; 
+}
+ 
+ #tooltip {
+  position: absolute;
+  display: block;
+  background: #fff;
+  box-shadow: 3px 3px 3px 0px rgb(92 92 92 / 0.5);
+  border: 1px solid #ddd;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px;
+  min-width: 160px;
+  color: #333;
+ }
+
+
+
+ .tooltip-title {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#tooltip ul {
+  margin: 5px 0 0 0;
+  padding-left: 20px;
+}

@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exoplanets</title>
+    
+    <!-- The following line references an external css file -->
+    <!-- It defines style rules for your page, and elements in your page -->
+    <link type="text/css" href="styles.css">
+
+    <link href="/dist/css/semantic-ui/tabulator_semantic-ui.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tabulator-tables@5.4.4/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.4.4/dist/js/tabulator.min.js"></script>
+    <style>
+
+        #Info{
+  background-color: #0A1128;
+  color:#FEFCFB;
+  width: 300px;
+  margin: 10px;
+  border: 3px, solid, #000;
+}
+
+body{
+    background-color: #0A1128;
+  color:#FEFCFB;
+
+}
+
+
+ #containert {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  height: 350px;
+  background-color: #0A1128;
+
+ }
+
+ .containert > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  background: #0A1128;
+  height: 400px;
+  width: 400px;
+
+ }
+
+
+canvas {
+  background-color: #0A1128;
+  box-shadow: 0 0 0 3px #0A1128;
+  cursor: grab;
+  display: block;
+}
+
+canvas:active {
+  cursor: grabbing; 
+}
+
+.container{
+    display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  height:auto;
+  background-color:#FEFCFB;
+  color: #0A1128;
+
+}
+.container > div{
+    display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  height:auto;
+
+}
+#scatterTooltip {
+  position: absolute;
+  display: block;
+  background: #fff;
+  box-shadow: 3px 3px 3px 0px rgb(92 92 92 / 0.5);
+  border: 1px solid #ddd;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px;
+  min-width: 160px;
+  color: #333;
+ }
+
+
+#scatterTooltip ul {
+  margin: 5px 0 0 0;
+  padding-left: 20px;
+}
+
+#circleTooltip {
+  position: absolute;
+  display: block;
+  background: #fff;
+  box-shadow: 3px 3px 3px 0px rgb(92 92 92 / 0.5);
+  border: 1px solid #ddd;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px;
+  min-width: 160px;
+  color: #333;
+ }
+
+
+#circleTooltip ul {
+  margin: 5px 0 0 0;
+  padding-left: 20px;
+}
+
+
+ #tooltip {
+  position: absolute;
+  display: block;
+  background: #fff;
+  box-shadow: 3px 3px 3px 0px rgb(92 92 92 / 0.5);
+  border: 1px solid #ddd;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px;
+  min-width: 160px;
+  color: #333;
+ }
+
+ .tooltip-title {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#tooltip ul {
+  margin: 5px 0 0 0;
+  padding-left: 20px;
+}
+
+.legend {
+  margin: 20px 0;
+  list-style: none;
+  padding: 0;
+}
+.legend-btn {
+  display: inline-block;
+  margin: 0 20px 0 0;
+  cursor: pointer;
+  transition: all ease-in-out 200ms;
+}
+.legend-btn:hover.legend-btn.inactive:hover  {
+  opacity: 0.7;
+}
+.legend-btn.inactive {
+  opacity: 0.5;
+}
+.legend-symbol {
+  width: 12px;
+  height: 12px;
+  margin-right: 3px;
+  display: inline-block;
+}
+.legend-btn[data-System="Milky Way"] .legend-symbol {
+  background: #d81159;
+}
+.legend-btn[data-System="Exoplanet"] .legend-symbol {
+  background: #1282A2;
+}
+    </style>
+ 
+</head>
+<body>
+    <div id="ha">
+        <h><b>Exoplanet Data</b></h>
+        <h><i>Veronica Ufferman</i></h>
+    </div>
+
+    <div id="containert" background-color="#0A1128">
+        <div  id="example-table"> </div>
+        <canvas class='illo' width="400" height="300"></canvas>
+        <div id="Info"> </div>
+        <img src="2.png" width: 50px, height: 50px>
+    </div>
+    <div class="container">
+        <div class="item2">
+            <div id="numStars" > </div>
+            <div id="numPlanets" ></div>   
+        </div>
+        <div>
+            <a href="https://en.wikipedia.org/wiki/Stellar_classification#Yerkes_spectral_classification"><img src="1.png"></a>
+            <div class="item3">
+                
+                <div id="orbits"></div>
+            </div>
+            
+            <div class="item4">
+                <div id="habitable"> </div>
+            </div>
+        </div>
+        <div id="item5">
+            <a href="https://exoplanets.nasa.gov/discovery/how-we-find-and-characterize/"><img src="3.png"></a>
+            <div id="discoveries" ></div>
+            <div id="discoveriesTime" > </div>
+        </div>
+        <div>
+            <div id="dist"></div>
+        </div>
+        <div>
+            <div id="radiusvMass" >  
+            <ul class="legend">
+                <li class="legend-btn" data-System="Milky Way"><span class="legend-symbol"></span> Milky Way</li>
+                <li class="legend-btn" data-System="Exoplanet"><span class="legend-symbol"></span> Exoplanet</li>
+            </ul></div>
+        </div>
+        </div>
+
+    </div>
+    <div>
+        <p><i>All Data Provided by: <a href="http://exoplanetarchive.ipac.caltech.edu">NASA</a></i> </p>
+    </div>
+
+    <div id="tooltip"></div>
+    <div id="circleTooltip"></div>
+    <div id = "scatterTooltip"></div>
+
+    <!-- Load external JS files -->
+    <script src="d3.v6.min.js"></script>
+    <script src="jquery-3.6.3.min.js"></script>
+    <script src="js/zdog.dist.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+
+    <!-- This is where you will do most of the 'work' for your applications -->
+    <script src="script.js"></script>
+
+    <script src="js/line.js"></script>
+    <script src="js/barchart.js"></script>
+    <script src="js/barchartNum.js"></script>
+    <script src="js/planet.js"></script>
+    <script src="js/circles.js"></script>
+    <script src="js/scatter.js"></script>
+    <script src="js/discovChart.js"></script>
+    <script src="js/planetTable.js"></script>
+</body>
+</html>
